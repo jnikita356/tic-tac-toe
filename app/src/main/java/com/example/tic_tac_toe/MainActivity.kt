@@ -3,6 +3,7 @@ package com.example.tic_tac_toe
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -41,11 +42,14 @@ class MainActivity : AppCompatActivity() {
         if (activePlayer == "player") {
             bSelected.text = "X"
             bSelected.setBackgroundColor(Color.CYAN)
+            activePlayer="computer"
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             player1.add(cellId)
-            activePlayer = "computer"
             if (player1.contains(1) && player1.contains(2) && player1.contains(3)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -78,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(4) && player1.contains(5) && player1.contains(6)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -108,6 +113,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(7) && player1.contains(8) && player1.contains(9)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -138,6 +144,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(1) && player1.contains(4) && player1.contains(7)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -168,6 +175,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(2) && player1.contains(5) && player1.contains(8)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -198,6 +206,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(3) && player1.contains(6) && player1.contains(9)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -228,6 +237,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(1) && player1.contains(5) && player1.contains(9)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -258,6 +268,7 @@ class MainActivity : AppCompatActivity() {
             } else if (player1.contains(3) && player1.contains(5) && player1.contains(7)) {
                 Toast.makeText(applicationContext, "Congratulations! You won", Toast.LENGTH_LONG)
                     .show()
+                activePlayer="player"
                 bDeactivate = b00
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
@@ -285,493 +296,40 @@ class MainActivity : AppCompatActivity() {
                 bDeactivate = b22
                 bDeactivate.isEnabled = false
                 bDeactivate.isClickable = false
-            } else if ((player1.size + computer.size) == 9) {
+            } else if ((player1.size + computer.size) >= 9) {
+                activePlayer="player"
                 Toast.makeText(applicationContext, "Game tied!", Toast.LENGTH_LONG).show()
-            }
-        }
-        if (activePlayer == "computer") {
-            autoPlay()
-            if (computer.contains(1) && computer.contains(2) && computer.contains(3)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(4) && computer.contains(5) && computer.contains(6)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(7) && computer.contains(8) && computer.contains(9)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(1) && computer.contains(4) && computer.contains(7)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(2) && computer.contains(5) && computer.contains(8)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(3) && computer.contains(6) && computer.contains(9)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(1) && computer.contains(5) && computer.contains(9)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if (computer.contains(3) && computer.contains(5) && computer.contains(7)) {
-                Toast.makeText(
-                    applicationContext,
-                    "Computer won! Better luck next time.",
-                    Toast.LENGTH_LONG
-                ).show()
-                bDeactivate = b00
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b01
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b02
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b10
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b11
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b12
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b20
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b21
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-                bDeactivate = b22
-                bDeactivate.isEnabled = false
-                bDeactivate.isClickable = false
-            } else if ((player1.size + computer.size) == 9) {
-                Toast.makeText(applicationContext, "Game tied!", Toast.LENGTH_LONG).show()
+                refresh()
 
             }
         }
-    }
+        if(activePlayer=="computer") {
+            Handler().postDelayed({ autoPlay() }, 500)
+        }
+
+
+        }
     private fun autoPlay(){
         val bSelected:Button
         val cellId:Int
-        if(player1.contains(1) && player1.contains(2) && !player1.contains(3) && !computer.contains(3)){
+        if(computer.contains(1) && computer.contains(2) && !player1.contains(3) && !computer.contains(3)){
             bSelected=b02
             bSelected.text="O"
             cellId=3
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
 
         }
-        else if(player1.contains(1) && player1.contains(3) && !player1.contains(2) && !computer.contains(3)){
+        else if(computer.contains(1) && computer.contains(3) && !player1.contains(2) && !computer.contains(2)){
             bSelected=b01
             bSelected.text="O"
             cellId=2
             bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-
-        }
-        else if(player1.contains(2) && player1.contains(3) && !player1.contains(1) && !computer.contains(1)){
-            bSelected=b00
-            bSelected.text="O"
-            cellId=1
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(1) && player1.contains(4) && !player1.contains(7) && !computer.contains(7)){
-            bSelected=b20
-            bSelected.text="O"
-            cellId=7
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(4) && player1.contains(7) && !player1.contains(1) && !computer.contains(1)){
-            bSelected=b00
-            bSelected.text="O"
-            cellId=1
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(1) && player1.contains(7) && !player1.contains(4) && !computer.contains(4)){
-            bSelected=b10
-            bSelected.text="O"
-            cellId=4
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(4) && player1.contains(5) && !player1.contains(6) && !computer.contains(6)){
-            bSelected=b12
-            bSelected.text="O"
-            cellId=6
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(4) && player1.contains(6) && !player1.contains(5) && !computer.contains(5)){
-            bSelected=b11
-            bSelected.text="O"
-            cellId=5
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(5) && player1.contains(6) && !player1.contains(4) && !computer.contains(4)){
-            bSelected=b10
-            bSelected.text="O"
-            cellId=4
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(7) && player1.contains(8) && !player1.contains(9) && !computer.contains(9)){
-            bSelected=b22
-            bSelected.text="O"
-            cellId=9
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(8) && player1.contains(9) && !player1.contains(7) && !computer.contains(7)){
-            bSelected=b20
-            bSelected.text="O"
-            cellId=7
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(7) && player1.contains(9) && !player1.contains(8) && !computer.contains(8)){
-            bSelected=b21
-            bSelected.text="O"
-            cellId=8
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(2) && player1.contains(5) && !player1.contains(8) && !computer.contains(8)){
-            bSelected=b21
-            bSelected.text="O"
-            cellId=8
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(5) && player1.contains(8) && !player1.contains(2) && !computer.contains(2)){
-            bSelected=b01
-            bSelected.text="O"
-            cellId=2
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(2) && player1.contains(8) && !player1.contains(5) && !computer.contains(5)){
-            bSelected=b11
-            bSelected.text="O"
-            cellId=5
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(3) && player1.contains(6) && !player1.contains(9) && !computer.contains(9)){
-            bSelected=b22
-            bSelected.text="O"
-            cellId=9
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(3) && player1.contains(9) && !player1.contains(6) && !computer.contains(6)){
-            bSelected=b12
-            bSelected.text="O"
-            cellId=6
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(6) && player1.contains(9) && !player1.contains(3) && !computer.contains(3)){
-            bSelected=b02
-            bSelected.text="O"
-            cellId=3
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(1) && player1.contains(5) && !player1.contains(9) && !computer.contains(9)){
-            bSelected=b22
-            bSelected.text="O"
-            cellId=9
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(1) && player1.contains(9) && !player1.contains(5) && !computer.contains(5)){
-            bSelected=b11
-            bSelected.text="O"
-            cellId=5
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(5) && player1.contains(9) && !player1.contains(1) && !computer.contains(1)){
-            bSelected=b00
-            bSelected.text="O"
-            cellId=1
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(3) && player1.contains(5) && !player1.contains(7) && !computer.contains(7)){
-            bSelected=b20
-            bSelected.text="O"
-            cellId=7
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(3) && player1.contains(7) && !player1.contains(5) && !computer.contains(5)){
-            bSelected=b11
-            bSelected.text="O"
-            cellId=5
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(player1.contains(5) && player1.contains(7) && !player1.contains(3) && !computer.contains(3)){
-            bSelected=b02
-            bSelected.text="O"
-            cellId=3
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-        }
-        else if(computer.contains(1) && computer.contains(2) && !player1.contains(3) && !computer.contains(3)){
-            bSelected=b02
-            bSelected.text="O"
-            cellId=3
-            bSelected.setBackgroundColor(Color.MAGENTA)
-            computer.add(cellId)
-            activePlayer="player"
-
-        }
-        else if(computer.contains(1) && computer.contains(3) && !player1.contains(2) && !computer.contains(3)){
-            bSelected=b01
-            bSelected.text="O"
-            cellId=2
-            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
 
@@ -781,6 +339,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=1
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -789,6 +349,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=7
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -797,6 +359,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=1
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -805,6 +369,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=4
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -813,6 +379,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=6
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -821,6 +389,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=5
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -829,6 +399,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=4
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -837,6 +409,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=9
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -845,6 +419,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=7
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -853,6 +429,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=8
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -861,6 +439,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=8
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -869,6 +449,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=2
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -877,6 +459,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=5
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -886,6 +470,8 @@ class MainActivity : AppCompatActivity() {
             cellId=9
             bSelected.setBackgroundColor(Color.MAGENTA)
             computer.add(cellId)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             activePlayer="player"
         }
         else if(computer.contains(3) && computer.contains(9) && !player1.contains(6) && !computer.contains(6)){
@@ -893,6 +479,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=6
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -901,6 +489,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=3
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -909,6 +499,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=9
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -917,6 +509,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=5
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -925,6 +519,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=1
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -933,6 +529,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=7
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -941,6 +539,8 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=5
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -949,6 +549,251 @@ class MainActivity : AppCompatActivity() {
             bSelected.text="O"
             cellId=3
             bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+
+        else if(player1.contains(1) && player1.contains(2) && !player1.contains(3) && !computer.contains(3)){
+            bSelected=b02
+            bSelected.text="O"
+            cellId=3
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+
+        }
+        else if(player1.contains(1) && player1.contains(3) && !player1.contains(2) && !computer.contains(2)){
+            bSelected=b01
+            bSelected.text="O"
+            cellId=2
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+
+        }
+        else if(player1.contains(2) && player1.contains(3) && !player1.contains(1) && !computer.contains(1)){
+            bSelected=b00
+            bSelected.text="O"
+            cellId=1
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(1) && player1.contains(4) && !player1.contains(7) && !computer.contains(7)){
+            bSelected=b20
+            bSelected.text="O"
+            cellId=7
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(4) && player1.contains(7) && !player1.contains(1) && !computer.contains(1)){
+            bSelected=b00
+            bSelected.text="O"
+            cellId=1
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(1) && player1.contains(7) && !player1.contains(4) && !computer.contains(4)){
+            bSelected=b10
+            bSelected.text="O"
+            cellId=4
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(4) && player1.contains(5) && !player1.contains(6) && !computer.contains(6)){
+            bSelected=b12
+            bSelected.text="O"
+            cellId=6
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(4) && player1.contains(6) && !player1.contains(5) && !computer.contains(5)){
+            bSelected=b11
+            bSelected.text="O"
+            cellId=5
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(5) && player1.contains(6) && !player1.contains(4) && !computer.contains(4)){
+            bSelected=b10
+            bSelected.text="O"
+            cellId=4
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(7) && player1.contains(8) && !player1.contains(9) && !computer.contains(9)){
+            bSelected=b22
+            bSelected.text="O"
+            cellId=9
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(8) && player1.contains(9) && !player1.contains(7) && !computer.contains(7)){
+            bSelected=b20
+            bSelected.text="O"
+            cellId=7
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(7) && player1.contains(9) && !player1.contains(8) && !computer.contains(8)){
+            bSelected=b21
+            bSelected.text="O"
+            cellId=8
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(2) && player1.contains(5) && !player1.contains(8) && !computer.contains(8)){
+            bSelected=b21
+            bSelected.text="O"
+            cellId=8
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(5) && player1.contains(8) && !player1.contains(2) && !computer.contains(2)){
+            bSelected=b01
+            bSelected.text="O"
+            cellId=2
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(2) && player1.contains(8) && !player1.contains(5) && !computer.contains(5)){
+            bSelected=b11
+            bSelected.text="O"
+            cellId=5
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(3) && player1.contains(6) && !player1.contains(9) && !computer.contains(9)){
+            bSelected=b22
+            bSelected.text="O"
+            cellId=9
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(3) && player1.contains(9) && !player1.contains(6) && !computer.contains(6)){
+            bSelected=b12
+            bSelected.text="O"
+            cellId=6
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(6) && player1.contains(9) && !player1.contains(3) && !computer.contains(3)){
+            bSelected=b02
+            bSelected.text="O"
+            cellId=3
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(1) && player1.contains(5) && !player1.contains(9) && !computer.contains(9)){
+            bSelected=b22
+            bSelected.text="O"
+            cellId=9
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(1) && player1.contains(9) && !player1.contains(5) && !computer.contains(5)){
+            bSelected=b11
+            bSelected.text="O"
+            cellId=5
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(5) && player1.contains(9) && !player1.contains(1) && !computer.contains(1)){
+            bSelected=b00
+            bSelected.text="O"
+            cellId=1
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(3) && player1.contains(5) && !player1.contains(7) && !computer.contains(7)){
+            bSelected=b20
+            bSelected.text="O"
+            cellId=7
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(3) && player1.contains(7) && !player1.contains(5) && !computer.contains(5)){
+            bSelected=b11
+            bSelected.text="O"
+            cellId=5
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
+            computer.add(cellId)
+            activePlayer="player"
+        }
+        else if(player1.contains(5) && player1.contains(7) && !player1.contains(3) && !computer.contains(3)){
+            bSelected=b02
+            bSelected.text="O"
+            cellId=3
+            bSelected.setBackgroundColor(Color.MAGENTA)
+            bSelected.isEnabled=false
+            bSelected.isClickable=false
             computer.add(cellId)
             activePlayer="player"
         }
@@ -965,6 +810,10 @@ class MainActivity : AppCompatActivity() {
                 i+=1
                 cellId=randomvalues[i]
             }
+            if(i>=9){
+                Toast.makeText(applicationContext, "Game tied!", Toast.LENGTH_LONG).show()
+                refresh()
+            }
             if(i<=8){
                 when(cellId){
                     1->bSelected=b00
@@ -979,12 +828,282 @@ class MainActivity : AppCompatActivity() {
                 }
                 bSelected.text="O"
                 bSelected.setBackgroundColor(Color.MAGENTA)
+                bSelected.isEnabled=false
+                bSelected.isClickable=false
                 computer.add(cellId)
                 activePlayer="player"
 
             }
+        }
+        var bDeactivate : Button
+        if (computer.contains(1) && computer.contains(2) && computer.contains(3)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
 
-
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(4) && computer.contains(5) && computer.contains(6)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(7) && computer.contains(8) && computer.contains(9)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(1) && computer.contains(4) && computer.contains(7)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(2) && computer.contains(5) && computer.contains(8)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(3) && computer.contains(6) && computer.contains(9)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(1) && computer.contains(5) && computer.contains(9)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if (computer.contains(3) && computer.contains(5) && computer.contains(7)) {
+            Toast.makeText(
+                applicationContext,
+                "Computer won! Better luck next time.",
+                Toast.LENGTH_LONG
+            ).show()
+            bDeactivate = b00
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b01
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b02
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b10
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b11
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b12
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b20
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b21
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+            bDeactivate = b22
+            bDeactivate.isEnabled = false
+            bDeactivate.isClickable = false
+        } else if ((player1.size + computer.size) >= 9) {
+            Toast.makeText(applicationContext, "Game tied!", Toast.LENGTH_LONG).show()
+            refresh()
         }
     }
     fun reset(view: View) {
@@ -1037,5 +1156,54 @@ class MainActivity : AppCompatActivity() {
         bSelected.isClickable = true
         bSelected.isEnabled = true
     }
+    private fun refresh(){
+        player1 = ArrayList<Int>()
+        computer = ArrayList<Int>()
+        activePlayer="player"
+        var bSelected:Button = b00
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b01
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b02
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b10
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b11
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b12
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b20
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b21
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+        bSelected=b22
+        bSelected.text=""
+        bSelected.setBackgroundColor(Color.WHITE)
+        bSelected.isClickable = true
+        bSelected.isEnabled = true
+    }
 }
-
